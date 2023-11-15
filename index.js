@@ -11,13 +11,18 @@ btn.addEventListener('click', e => {
     }
 
     // Create an object to store user data
-    const userData = {
+    const user = {
         name: name,
         email: email
     };
 
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Add the new user to the array
+    existingUsers.push(user);
+
     // Convert the object to a JSON string and store it in local storage
-    localStorage.setItem('userData', JSON.stringify(userData));
+    localStorage.setItem('users', JSON.stringify(existingUsers));
 
     myForm.reset();
 
